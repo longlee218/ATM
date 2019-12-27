@@ -21,6 +21,9 @@ class Branch(models.Model):
     branch_name = models.CharField(max_length=100)
     branch_address = models.TextField()
 
+    def __str__(self):
+        return self.branch_id
+
 
 class Employee(models.Model):
     branch_id = models.ForeignKey(Branch, on_delete=models.CASCADE)
@@ -47,4 +50,5 @@ class HistoryMoney(models.Model):
     atm_id = models.ForeignKey(ATM, on_delete=models.CASCADE)
     history_time = models.DateTimeField()
     money = models.BigIntegerField()
+
 

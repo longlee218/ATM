@@ -6,6 +6,7 @@ class Customer(models.Model):
     Sex = (
         ('M', 'Man'),
         ('W', 'Woman'),
+        ('No', 'Unknown'),
     )
     type = (
         ('CMND', 'Chứng minh nhân dân'),
@@ -13,15 +14,15 @@ class Customer(models.Model):
         ('HC', 'Hộ chiếu'),
     )
     branch_id = models.ForeignKey(Branch, on_delete=models.CASCADE)
-    customer_id = models.CharField(max_length=5, primary_key=True)
-    full_name = models.CharField(max_length=32)
-    birthday = models.DateField()
-    gender = models.CharField(max_length=1, choices=Sex)
-    hometown = models.TextField()
-    phone_number = models.CharField(max_length=12, unique=True)
-    email = models.EmailField(unique=True)
+    customer_id = models.AutoField(default=1, primary_key=True)
     card_type = models.CharField(max_length=4, choices=type)
     card_no = models.CharField(max_length=15, unique=True)
+    full_name = models.CharField(max_length=32)
+    birthday = models.DateField()
+    gender = models.CharField(max_length=2, choices=Sex)
+    address = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=12, unique=True)
+    email = models.EmailField(unique=True)
 
 
 class Account(models.Model):
