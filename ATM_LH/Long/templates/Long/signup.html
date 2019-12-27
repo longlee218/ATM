@@ -1,0 +1,18 @@
+{% extends 'Long/base.html' %}
+{% block sign_up %}
+
+<form action="{% url 'Long:signup' %}" method="post">
+    {% csrf_token %}
+    {{ info.as_p }}
+{#    <p>{{ info.full_name }}</p>#}
+{#    <p>{{ info.birthday }}</p>#}
+{#    <p>{{ info.gender }}</p>#}
+{#    <p>{{ info.hometown }}</p>#}
+{#    <p>{{ info.phone_number }}</p>#}
+{#    <p>{{ info.email }}</p>#}
+{#    <p>{{ info.card_type }}</p>#}
+{#    <p>{{ info.card_no }}</p>#}
+    <hr>
+    <input type="submit" value="Dang Ki">
+</form>
+{% endblock %}
