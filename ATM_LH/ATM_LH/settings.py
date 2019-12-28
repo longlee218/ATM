@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Long.apps.LongConfig',
-    'Hoang.apps.HoangConfig',
+    'Hoang.apps.AppConfig',
 ]
 
 MIDDLEWARE = [
