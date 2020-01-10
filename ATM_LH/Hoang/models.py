@@ -1,5 +1,5 @@
 from django.db import models
-from ATM_LH.Long.models import Branch, ATM, Bank
+from Long.models import Branch, ATM, Bank
 
 
 class Customer(models.Model):
@@ -14,7 +14,7 @@ class Customer(models.Model):
         ('HC', 'Hộ chiếu'),
     )
     branch_id = models.ForeignKey(Branch, on_delete=models.CASCADE)
-    customer_id = models.AutoField(default=1, primary_key=True)
+    customer_id = models.AutoField(primary_key=True, null=False, blank=False)
     card_type = models.CharField(max_length=4, choices=type)
     card_no = models.CharField(max_length=15, unique=True)
     full_name = models.CharField(max_length=32)
@@ -31,7 +31,7 @@ class Account(models.Model):
         ('2', 'Dormant'),
         ('0', 'Inactive'),
     )
-    customer_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    customer_id = models.ForeignKey(Customer, on_delete=models.CASCADE, null=False, blank=False)
     account_no = models.CharField(max_length=15, primary_key=True)
     password = models.CharField(max_length=50)
     limit = models.BigIntegerField()

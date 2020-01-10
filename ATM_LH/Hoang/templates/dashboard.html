@@ -1,5 +1,10 @@
 {% extends 'index.html' %}
 
 {% block content %}
-    <h1>welcome, {{ user.username }}</h1>
+    <h1>welcome</h1>
+        <div>
+            <input type="button" value="Rút tiền" onclick="location.href='{% url 'withdrawal' %}'">
+            <input type="button" value="Chuyển tiền">
+            <input type="button" value="Lịch sử giao dịch">
+        </div>
 {% endblock %}
