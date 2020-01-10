@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends 'Long/base.html' %}
+{% block success_login %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Success Login</title>
+    <style>
+        head{
+            right: 30%;
+            color: indianred;
+        }
+    </style>
+</head>
+<body>
+    <h2>Welcome back {{ admin }}</h2>
+    <a href="{% url 'Long:change' %}">Change Password</a>
+    <a href="{% url 'Long:logout' %}">Logout</a>
+</body>
+</html>
+{% endblock %}

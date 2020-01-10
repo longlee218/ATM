@@ -18,5 +18,10 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+<<<<<<< Updated upstream
     path('Long/', include('Long.urls'))
+=======
+    path('', include('Hoang.urls')),
+    path('Long/', include('Long.urls')),
+>>>>>>> Stashed changes
 ]
