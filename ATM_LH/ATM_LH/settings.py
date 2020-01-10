@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Long',
-    'Hoang',
+    'Long.apps.LongConfig',
+    'Hoang.apps.HoangConfig',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ATM',
         'USER': 'root',
-        'PASSWORD': 'long',
+        'PASSWORD': 'test',
         'HOST': 'localhost',
         'PORT': '3306',
     }
