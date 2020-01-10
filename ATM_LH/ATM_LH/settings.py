@@ -78,11 +78,14 @@ WSGI_APPLICATION = 'ATM_LH.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ATM',
+        'NAME': 'projectATM',
         'USER': 'root',
         'PASSWORD': 'test',
         'HOST': 'localhost',
         'PORT': '3306',
+        'OPTIONS': {
+                'charset': 'utf8'
+            }
     }
 }
 
@@ -124,3 +127,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = '/dashboard.html/'
+
+STATICFILES_DIRS =[
+    os.path.join(BASE_DIR, 'static')
+]
