@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Find Bank</title>
+</head>
+<body>
+    <form method="post" action="{% url 'Long:find_branch' %}">
+        {% csrf_token %}
+       <label>Select Province:
+        <select name="ProvinceID">
+            <option>---Select---</option>
+           {% for province in object_province %}
+                    <option value="{{ province.province_id }}">{{ province.province_name }}</option>
+           {% endfor %}
+       </select>
+       </label>
+        <label>Select Bank:
+            <select name="BankID">
+                <option>---Select---</option>
+               {% for bank in object_bank %}
+                        <option value="{{ bank.bank_id }}">{{ bank.bank_name }}</option>
+               {% endfor %}
+           </select>
+        </label>
+        <input type="submit" value="Find">
+    </form>
+</body>
+</html>
