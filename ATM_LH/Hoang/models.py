@@ -1,5 +1,5 @@
 from django.db import models
-from ATM_LH.Long.models import Branch, ATM, Bank
+from Long.models import Branch, ATM, Bank
 
 
 class Customer(models.Model):

@@ -18,14 +18,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    path('Long/', include('Long.urls'))
-=======
+    path('Long/', include('Long.urls')),
     path('', include('Hoang.urls')),
     path('Long/', include('Long.urls')),
->>>>>>> Stashed changes
-=======
     path('', include('Hoang.urls')),
->>>>>>> dev
 ]
