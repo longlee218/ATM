@@ -30,6 +30,10 @@ def signup(request):
     return render(request, 'Long/login.html', {'form': form})
 
 
+def home_view(request):
+    return render(request, 'Long/success_login.html', {})
+
+
 class LoginAdmin(View):
     def get(self, request):
         return render(request, 'Long/login.html', {})
@@ -100,21 +104,19 @@ class AddProvince(View):
             return HttpResponse("It is not a method POST")
 
 
-def process_branch(request):
-    if request.method == 'POST':
-        bank_id = request.POST['BankID']
-        province_id = request.POST['ProvinceID']
-        result_branch = Branch.objects.filter(bank_id=bank_id, province_id=province_id)
-        return render(request, 'Long/result_branch_find.html', {'result': result_branch})
-    else:
-        pass
+class FindBranch(View):
+    def get(self, request):
+        object_bank = Bank.objects.all()
+        object_province = Province.objects.all()
+        context = {
+            'object_bank': object_bank,
+            'object_province': object_province,
+        }
+        return render(request, 'Long/find_branch.html', context)
 
-
-def view_branch(request):
-    object_bank = Bank.objects.all()
-    object_province = Province.objects.all()
-    context = {
-        'object_bank': object_bank,
-        'object_province': object_province,
-    }
-    return render(request, 'Long/find_branch.html', context)
+    def post(self, request):
+        if request.method == 'POST':
+            bank_id = request.POST['BankID']
+            province_id = request.POST['ProvinceID']
+            result_branch = Branch.objects.filter(bank_id=bank_id, province_id=province_id)
+            return render(request, 'Long/result_branch_find.html', {'result': result_branch})

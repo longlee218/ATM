@@ -27,14 +27,15 @@ def SignUpView(request):
         form1 = RegistrationForm(request.POST)
         if form1.is_valid():
             form1.save()
+            print('')
             Max = 9999999
             account_number = random.randint(0, Max)
-            password1 = BaseUserManager.make_random_password(6)
+            password1 = BaseUserManager().make_random_password
             c_id = Customer.objects.filter(card_no= form1.cleaned_data['card_no']).first()
             Account.objects.create(account_no=account_number, password=password1, limit=100000000, balance=50000,
                                    create_day=datetime.date.today(), end_day=datetime.date.today() + timedelta(days=3650), status=1,
                                    customer_id=c_id)
-
+            print('x')
             return HttpResponse('hhahahaha')
     else:
         form1 = RegistrationForm()
