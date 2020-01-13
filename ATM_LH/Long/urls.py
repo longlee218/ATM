@@ -24,5 +24,6 @@ urlpatterns = [
     path('find/province/', FindProvince.as_view(), name='province_find'),
     path('add/province/', AddProvince.as_view(), name='add_province'),
     path('find/branch/view/', FindBranch.as_view(), name='view_branch'),
-    path('open/card/', open_new_card, name='open_card')
+    path('home/', home_view, name='home'),
+    path('open/card/', open_new_card, name='open_card'),
 ]

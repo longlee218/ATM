@@ -5,6 +5,9 @@ class Province(models.Model):
     province_id = models.CharField(primary_key=True, max_length=2)
     province_name = models.TextField()
 
+    def __str__(self):
+        return self.province_name
+
 
 class Bank(models.Model):
     bank_id = models.CharField(primary_key=True, max_length=8)
@@ -12,6 +15,9 @@ class Bank(models.Model):
     bank_headquarters = models.TextField()
     bank_phone_number = models.CharField(max_length=10)
     branches = models.ManyToManyField(Province, through="Branch")
+
+    def __str__(self):
+        return self.bank_name
 
 
 class Branch(models.Model):
