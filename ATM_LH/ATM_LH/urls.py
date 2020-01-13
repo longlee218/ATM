@@ -20,6 +20,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('Long/', include('Long.urls')),
     path('', include('Hoang.urls')),
-    path('Long/', include('Long.urls')),
-    path('', include('Hoang.urls')),
 ]

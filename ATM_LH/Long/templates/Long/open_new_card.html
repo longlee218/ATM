@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Open new Card</title>
+</head>
+<body>
+    <form method="post" action="{% url 'Long:open_card' %}">
+        {% csrf_token %}
+        <div>
+            <label> ID account</label>
+            <input type="text" placeholder="ID account" name="id_account">
+        </div>
+
+        <div>
+            <label> Customer Name</label>
+            <input type="text" placeholder="Customer Name" name="customer_name">
+        </div>
+
+        <div>
+            <input type="radio" name="card_type" value="1">
+            <label>Thẻ tín dụng</label>
+            <input type="radio" name="card_type" value="2">
+            <label>Thẻ ATM</label>
+            <input type="radio" name="card_type" value="3">
+            <label>Thẻ ghi nợ</label>
+            <input type="radio" name="card_type" value="4">
+            <label>Thẻ đảm bảo</label>
+            <input type="radio" name="card_type" value="5">
+            <label>Thẻ Visa</label>
+
+            <input type="submit" value="Commit">
+        </div>
+    </form>
+</body>
+</html>
