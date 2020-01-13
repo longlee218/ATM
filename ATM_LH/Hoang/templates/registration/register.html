@@ -1,10 +1,49 @@
 {% extends 'index.html' %}
 
 {% block content %}
-    <h1>Create new account</h1>
+    <h1>Tạo tài khoản cho khách hàng</h1>
     <form method="post" action="">
         {% csrf_token %}
-        {{ form.as_p }}
+        <div>
+            <label for="fullname">Họ và tên:</label>
+            {{ form.full_name }}
+        </div>
+        <div>
+            <label for="cardtype">Loại giấy tờ tùy thân:</label>
+            {{ form.card_type }}
+        </div>
+        <div>
+            <label for="cardno">Số giấy tờ:</label>
+            {{ form.card_no }}
+            {{ form.card_no.errors }}
+        </div>
+        <div>
+            <label for="gender">Giới tính:</label>
+            {{ form.gender }}
+        </div>
+        <div>
+            <label for="birthday">Ngày sinh:</label>
+            {{ form.birthday }}
+        </div>
+        <div>
+            <label for="phonenumber">Số điên thoại:</label>
+            {{ form.phone_number }}
+            {{ form.phone_number.errors }}
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            {{ form.email }}
+            {{ form.email.errors }}
+        </div>
+        <div>
+            <label for="address">Địa chỉ:</label>
+            {{ form.address }}
+        </div>
+        <div>
+            <label for="branchid">Chi nhánh đăng kí:</label>
+            {{ form.branch_id }}
+        </div>
+
         <button value="submit">Đăng kí</button>
     </form>
 {% endblock %}
