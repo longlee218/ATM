@@ -1,11 +1,29 @@
-from django.urls import path
-from Long.views import Home
-from django.conf.urls import url
-from Long.views import signup, add_inf, signup_customer
-
+from django.urls import path, include
+from django.contrib.auth import views as auth_views
+from Long.views import LoginAdmin, change_password_admin, logout_admin, FindProvince, \
+                       AddProvince, process_branch, view_branch
 app_name = 'Long'
 urlpatterns = [
-    path('home/', Home, name='home'),
-    path('signup/', signup_customer, name='signup'),
-    path('add/', add_inf, name='addinf'),
+    path('login/', LoginAdmin.as_view(), name='login'),
+    path('change/', change_password_admin, name='change'),
+    path('logout/', logout_admin, name='logout'),
+    # reset hoan thien
+    path('password_reset/done/', auth_views.PasswordResetCompleteView.as_view(
+        template_name='registration/password_reset_done.html'), name='password_reset_done'),
+    # confirm password
+    path('reset/<uidb64>/<token>', auth_views.PasswordResetConfirmView.as_view(
+        template_name='registration/password_reset_confirm.html'), name='password_reset_confirm'
+    ),
+    # Yeu cau reset password
+    path('password_reset/', auth_views.PasswordResetView.as_view(
+        template_name='registration/password_reset_form.html'), name='password_reset'),
+    # Reset hoan thanh
+    path('reset/done/', auth_views.PasswordResetDoneView.as_view(
+        template_name='registration/password_reset_complete.html'), name='password_reset_complete'
+    ),
+    path('find/province/', FindProvince.as_view(), name='province_find'),
+    path('add/province/', AddProvince.as_view(), name='add_province'),
+    path('find/branch/', process_branch, name='find_branch'),
+    path('find/branch/view/', view_branch, name='view_branch'),
+
 ]

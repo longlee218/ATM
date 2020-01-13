@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% extends 'Long/base.html' %}
+{% block find_province %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Province</title>
+</head>
+<body>
+    <h1>Find Province by Province ID</h1>
+    <form method="post" action=" ">
+        {% csrf_token %}
+        <input type="text" placeholder="Province ID" name="province_id">
+        <input type="submit" value="Gui">
+    </form>
+
+    {% block result_province %}{% endblock %}
+</body>
+</html>
+{% endblock %}

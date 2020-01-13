@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # During development only
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+
 
 # Application definition
 

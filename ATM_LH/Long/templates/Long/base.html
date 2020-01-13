@@ -17,8 +17,12 @@
     {% block sign_up %}
 
     {% endblock %}
-<div class="content">
+<div class="content"> </div>
+<div>{% block success_login %} {% endblock %}</div>
 
-</div>
+<a href="{% url 'Long:province_find' %}">Find Province</a>
+<a href="{% url 'Long:add_province' %}"> Add Province</a>
+<a href="{% url 'Long:view_branch' %}">Find Branch</a>
+{% block find_province %}{% endblock %}
 </body>
 </html>
