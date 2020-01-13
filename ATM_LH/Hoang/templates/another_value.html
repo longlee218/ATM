@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rút tiền</title>
+</head>
+<body>
+    <h2>Nhập số khác</h2>
+    <form method="post" action="">
+        {% csrf_token %}
+        <input type="text" id="id_money" name="amount" placeholder="Nhập vào một mệnh giá" maxlength="50"/>
+        <input type="submit" value="Xác nhận">
+    </form>
+</body>
+</html>

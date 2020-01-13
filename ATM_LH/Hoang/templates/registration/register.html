@@ -6,44 +6,57 @@
         {% csrf_token %}
         <div>
             <label for="fullname">Họ và tên:</label>
-            {{ form.full_name }}
+            <input type="text" maxlength="50" name="fullname" placeholder="Nhập tên của bạn">
         </div>
         <div>
             <label for="cardtype">Loại giấy tờ tùy thân:</label>
-            {{ form.card_type }}
+            <input type="radio" id="cmnd" name="id_type" value="cmnd" checked>
+            <label for="cmnd">Chứng minh nhân dân</label>
+            <input type="radio" id="tcc" name="id_type" value="tcc">
+            <label for="tcc">Thẻ căn cước</label>
+            <input type="radio" id="hc" name="id_type" value="hc">
+            <label for="hc">Hộ chiếu</label>
         </div>
         <div>
-            <label for="cardno">Số giấy tờ:</label>
-            {{ form.card_no }}
-            {{ form.card_no.errors }}
+            <label for="idno">Số giấy tờ:</label>
+            <input type="text" id="id_no" name="id_no" placeholder="Số giấy tờ">
         </div>
         <div>
             <label for="gender">Giới tính:</label>
-            {{ form.gender }}
+            <input type="radio" id="gender" name="gender" value="M">
+            <label for="hc">Nam</label>
+            <input type="radio" id="gender" name="gender" value="W">
+            <label for="hc">Nữ</label>
+            <input type="radio" id="hc" name="gender" value="No">
+            <label for="hc">Không</label>
         </div>
         <div>
             <label for="birthday">Ngày sinh:</label>
-            {{ form.birthday }}
+            <input type="date" name="bday">
         </div>
         <div>
             <label for="phonenumber">Số điên thoại:</label>
-            {{ form.phone_number }}
-            {{ form.phone_number.errors }}
+            <input type="text" name="phone" pattern="(09|01[2|6|8|9])+([0-9]{8})\b" placeholder="Nhập số điện thoại">
         </div>
         <div>
             <label for="email">Email:</label>
-            {{ form.email }}
-            {{ form.email.errors }}
+            <input type="email" pattern="^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$" name="emai" placeholder="Email">
         </div>
         <div>
             <label for="address">Địa chỉ:</label>
-            {{ form.address }}
+            <input type="text" maxlength="150" name="address" placeholder="Địa chỉ">
         </div>
         <div>
-            <label for="branchid">Chi nhánh đăng kí:</label>
-            {{ form.branch_id }}
+            <label for="branch-id">Chi nhánh đăng kí:</label>
+            <select name="branch_id">
+                <option value="CTG01">CTG01</option>
+            </select>
         </div>
-
         <button value="submit">Đăng kí</button>
+        <div>
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+         </div>
     </form>
 {% endblock %}

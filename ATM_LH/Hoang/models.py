@@ -15,8 +15,8 @@ class Customer(models.Model):
     )
     branch_id = models.ForeignKey(Branch, on_delete=models.CASCADE)
     customer_id = models.AutoField(primary_key=True, null=False, blank=False)
-    card_type = models.CharField(max_length=4, choices=type)
-    card_no = models.CharField(max_length=15, unique=True)
+    id_type = models.CharField(max_length=4, choices=type)
+    id_no = models.CharField(max_length=15, unique=True)
     full_name = models.CharField(max_length=32)
     birthday = models.DateField()
     gender = models.CharField(max_length=2, choices=Sex)
@@ -72,7 +72,7 @@ class Transaction(models.Model):
         ('1', 'success'),
         ('0', 'fail'),
     )
-    transaction_id = models.CharField(max_length=3, primary_key=True)
+    transaction_id = models.AutoField(primary_key=True)
     transaction_type = models.CharField(max_length=3, choices=type)
     transaction_time = models.DateTimeField()
     balance = models.BigIntegerField()
