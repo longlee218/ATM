@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, update_session_auth_hash, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse, Http404
+from Long.forms import ProvinceAdd
 from django.views import View
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
@@ -97,21 +98,21 @@ class FindProvince(View):
             return HttpResponse('It is not Post method')
 
 
-# class AddProvince(View):
-#     def get(self, request):
-#         form_province = ProvinceAdd()
-#         return render(request, 'Long/add_new_province.html', {'form': form_province})
-#
-#     def post(self, request):
-#         if request.method == 'POST':
-#             form_province = ProvinceAdd(request.POST)
-#             if form_province.is_valid():
-#                 form_province.save()
-#                 return HttpResponse("Success")
-#             else:
-#                 return HttpResponse("This form is not validate")
-#         else:
-#             return HttpResponse("It is not a method POST")
+class AddProvince(View):
+    def get(self, request):
+        form_province = ProvinceAdd()
+        return render(request, 'Long/add_new_province.html', {'form': form_province})
+
+    def post(self, request):
+        if request.method == 'POST':
+            form_province = ProvinceAdd(request.POST)
+            if form_province.is_valid():
+                form_province.save()
+                return HttpResponse("Success")
+            else:
+                return HttpResponse("This form is not validate")
+        else:
+            return HttpResponse("It is not a method POST")
 
 
 class FindBranch(View):
