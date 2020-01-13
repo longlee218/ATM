@@ -1,3 +1,5 @@
+{% extends 'Long/base.html' %}
+{% block find_branch %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +7,7 @@
     <title>Find Bank</title>
 </head>
 <body>
-    <form method="post" action="{% url 'Long:find_branch' %}">
+    <form method="post" action="{% url 'Long:view_branch' %}">
         {% csrf_token %}
        <label>Select Province:
         <select name="ProvinceID">
@@ -25,5 +27,9 @@
         </label>
         <input type="submit" value="Find">
     </form>
+<label>
+{% block result_branch_find %}{% endblock %}
+</label>
 </body>
 </html>
+{% endblock %}

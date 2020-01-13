@@ -5,6 +5,7 @@
     <title>Rút tiền</title>
 </head>
     <body>
+        <h2>{{ atm }}</h2>
         <form method="post" action="">
             {% csrf_token %}
             <h2>Rút tiền</h2>
@@ -14,7 +15,6 @@
             <input id="id_1000" type="submit" name="amount" value="1000000"/>
             <input id="id_2000" type="submit" name="amount" value="2000000"/>
             <input id="id_5000" type="submit" name="amount" value="5000000"/>
-{#            <button onclick="location.href='{% url 'AnotherValue' %}'">Nhập số khác</button>#}
 {#            <button onclick="location.href='{% url 'dashboard' %}'">Quay lại</button>#}
         </form>
     </body>

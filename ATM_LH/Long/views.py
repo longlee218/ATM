@@ -41,6 +41,10 @@ def home_view(request):
     return render(request, 'Long/success_login.html', {})
 
 
+def home_view(request):
+    return render(request, 'Long/success_login.html', {})
+
+
 class LoginAdmin(View):
     def get(self, request):
         return render(request, 'Long/login.html', {})
