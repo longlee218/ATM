@@ -8,6 +8,12 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from Long.models import Province, Bank, Branch
+from Hoang.models import Customer, Card, Account
+from django.contrib.auth.base_user import BaseUserManager
+import datetime
+from datetime import timedelta
+import random
+import string
 # Create your views here.
 
 
@@ -16,18 +22,23 @@ def Home(request):
 
 #dang ky nguoi dung
 def signup(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('Username')
-            raw_password = form.cleaned_data.get('PassWord')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('home')
-    else:
-        form = UserCreationForm()
-    return render(request, 'Long/login.html', {'form': form})
+    # if request.method == 'POST':
+    #     form = UserCreationForm(request.POST)
+    #     if form.is_valid():
+    #         form.save()
+    #         username = form.cleaned_data.get('Username')
+    #         raw_password = form.cleaned_data.get('PassWord')
+    #         user = authenticate(username=username, password=raw_password)
+    #         login(request, user)
+    #         return redirect('home')
+    # else:
+    #     form = UserCreationForm()
+    # return render(request, 'Long/login.html', {'form': form})
+    pass
+
+
+def home_view(request):
+    return render(request, 'Long/success_login.html', {})
 
 
 def home_view(request):
@@ -120,3 +131,42 @@ class FindBranch(View):
             province_id = request.POST['ProvinceID']
             result_branch = Branch.objects.filter(bank_id=bank_id, province_id=province_id)
             return render(request, 'Long/result_branch_find.html', {'result': result_branch})
+        else:
+            return HttpResponse('click di dcm')
+
+
+def searching(request):
+    if request.method == 'GET':
+        querry = request.GET.get('Search')
+
+    else:
+        return HttpResponse('hahaa')
+
+
+def open_new_card(request):
+    if request.method == 'POST':
+        id_account = request.POST['id_account']
+        account = Account.objects.filter(account_no=id_account).first()
+        customer_name_input = request.POST['customer_name']
+        try:
+            if Account.objects.filter(customer_id__full_name__iexact=customer_name_input):
+                max_card_number = 16
+                card_no = random.randint(10**(max_card_number - 1), (10**max_card_number) - 1)
+                create_date = datetime.datetime.today()
+                end_date = create_date + timedelta(3650)
+                card_type = request.POST['card_type']
+                status = 1
+                Card.objects.create(card_no=card_no,
+                                    pin=BaseUserManager().make_random_password(6, string.digits),
+                                    create_date=create_date, end_date=end_date,
+                                    card_type=card_type,
+                                    status=status,
+                                    account_no=account)
+                return HttpResponse('You have create new card with ID card {}'.format(card_no))
+            else:
+                messages.error('Check your name again!')
+                return render(request, 'Long/add_new_province.html', {})
+        except:
+             return HttpResponse('Dont have this ID account {}'.format(id_account))
+    else:
+        return render(request, 'Long/open_new_card.html', {})

@@ -1,7 +1,7 @@
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from Long.views import LoginAdmin, change_password_admin, logout_admin, FindProvince, \
-                       AddProvince, FindBranch,home_view
+                       AddProvince, FindBranch, home_view, open_new_card
 app_name = 'Long'
 urlpatterns = [
     path('login/', LoginAdmin.as_view(), name='login'),
@@ -24,5 +24,5 @@ urlpatterns = [
     path('find/province/', FindProvince.as_view(), name='province_find'),
     path('add/province/', AddProvince.as_view(), name='add_province'),
     path('find/branch/view/', FindBranch.as_view(), name='view_branch'),
-    path('home/', home_view, name='home'),
+    path('open/card/', open_new_card, name='open_card')
 ]
